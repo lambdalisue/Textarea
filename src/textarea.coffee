@@ -1,4 +1,16 @@
-#!/usr/bin/env coffee
+###
+TextArea.coffee
+
+Cross browser textarea munipulator script written in CoffeeScript
+
+Author: Alisue (lambdalisue@hashnote.net)
+License: MIT License
+Url: http://github.com/lambdalisue/Textarea.coffee
+Reference:
+  - http://archiva.jp/web/javascript/getRange_in_textarea.html
+  - http://livepipe.net/control/textarea
+  - http://markitup.jaysalvat.com/home/
+###
 # Textarea controll class
 class @Textarea
   constructor: (textarea) ->
@@ -31,7 +43,6 @@ class @Textarea
   setSelection: (start, end) ->
     scrollTop = @textarea.scrollTop
     if @textarea.createTextRange
-      # quick fix to make it work on Opera 9.5
       if $.browser.opera and $.browser.version >= 9.5 and length is 0
         return false
       range = @textarea.createTextRange()
