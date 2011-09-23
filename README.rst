@@ -83,6 +83,6 @@ JavaScript with Firebug::
 References
 ====================
 
-:textareaの選択範囲を取得し、前後に文字列を挿入する: http://archiva.jp/web/javascript/getRange_in_textarea.html
-:Control.TextArea: http://livepipe.net/control/textarea
-:markItUp!: http://markitup.jaysalvat.com/home/
+-   http://archiva.jp/web/javascript/getRange_in_textarea.html
+-   http://livepipe.net/control/textarea
+-   http://markitup.jaysalvat.com/home/
