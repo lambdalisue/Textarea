@@ -3,10 +3,10 @@ TextArea.coffee
 
 Cross browser textarea munipulator script written in CoffeeScript
 
-Author: Alisue (lambdalisue@hashnote.net)
-License: MIT License
-Url: http://github.com/lambdalisue/Textarea.coffee
-Reference:
+:Author: Alisue (lambdalisue@hashnote.net)
+:License: MIT License
+:Url: http://github.com/lambdalisue/Textarea.coffee
+:Reference:
   - http://archiva.jp/web/javascript/getRange_in_textarea.html
   - http://livepipe.net/control/textarea
   - http://markitup.jaysalvat.com/home/

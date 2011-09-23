@@ -7,9 +7,9 @@ Cross browser textarea munipulator script written in CoffeeScript
 This script is inspired by `Control.TextArea <http://livepipe.net/control/textarea>`_ and 
 `markItUp! <http://markitup.jaysalvat.com/home/>`_
 
-Author: Alisue (lambdalisue@hashnote.net)
-License: MIT License
-Url: http://github.com/lambdalisue/Textarea.coffee
+:Author: Alisue (lambdalisue@hashnote.net)
+:License: MIT License
+:Url: http://github.com/lambdalisue/Textarea.coffee
 
 How to use
 ====================
@@ -83,6 +83,6 @@ JavaScript with Firebug::
 References
 ====================
 
-textareaの選択範囲を取得し、前後に文字列を挿入する: http://archiva.jp/web/javascript/getRange_in_textarea.html
-Control.TextArea: http://livepipe.net/control/textarea
-markItUp!: http://markitup.jaysalvat.com/home/
+:textareaの選択範囲を取得し、前後に文字列を挿入する: http://archiva.jp/web/javascript/getRange_in_textarea.html
+:Control.TextArea: http://livepipe.net/control/textarea
+:markItUp!: http://markitup.jaysalvat.com/home/
