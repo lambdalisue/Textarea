@@ -18,11 +18,9 @@ class @Textarea
       @textarea = textarea.get(0)
     else
       @textarea = textarea
-
   # get value
   getValue: ->
     return @textarea.value
-
   # get selection
   getSelection: ->
     if document.selection
@@ -38,7 +36,6 @@ class @Textarea
       s = @textarea.selectionStart
       e = @textarea.selectionEnd
     return [s, e]
-
   # set selection
   setSelection: (start, end) ->
     scrollTop = @textarea.scrollTop
@@ -54,7 +51,6 @@ class @Textarea
       @textarea.setSelectionRange start, end
     @textarea.focus()
     @textarea.scrollTop = scrollTop
-
   # get selected text
   getSelected: ->
     if document.selection
@@ -64,13 +60,9 @@ class @Textarea
       [start, end] = @getSelection()
       return @textarea.value.substring start, end
     return false
-
-
   # replace selection text with block
-  replaceSelected: (str, select=false) ->
-    scrollTop = @textarea.scrollTop
-    [start, end] = @getSelection()
-    if document.selection   # MSIE and Opera
+  _replaceSelected: (str, start=undefined, end=undefined) ->
+    if document.selection # MSIE and Opera
       @textarea.focus()
       range = document.selection.createRange()
       range.text = str
@@ -79,6 +71,10 @@ class @Textarea
       before = @textarea.value.substring 0, start
       after = @textarea.value.substring end
       @textarea.value = before + str + after
+  replaceSelected: (str, select=false) ->
+    scrollTop = @textarea.scrollTop
+    [start, end] = @getSelection()
+    @_replaceSelected str, start, end
     # set new selection
     end = start+str.length
     if not select
@@ -86,37 +82,55 @@ class @Textarea
     @setSelection start, end
     @textarea.focus()
     @textarea.scrollTop = scrollTop
-
   # insert str before the selection
   insertBeforeSelected: (str, select=false) ->
+    scrollTop = @textarea.scrollTop
     [start, end] = @getSelection()
     selected = @getSelected()
-    @replaceSelected str + selected, false
-    if select
-      # set new selection
-      end = start+str.length
-      @setSelection start, end
-      @textarea.focus()
-      @textarea.scrollTop = scrollTop
+    @_replaceSelected str + selected, start, end
+    end = start+str.length
+    if not select
+      start = end
+    @setSelection start, end
+    @textarea.focus()
+    @textarea.scrollTop = scrollTop
   # insert str after the selection
   insertAfterSelected: (str, select=false) ->
+    scrollTop = @textarea.scrollTop
     [start, end] = @getSelection()
     selected = @getSelected()
-    @replaceSelected selected + str, select
-    if select
-      # set new selection
+    @_replaceSelected selected + str, start, end
+    end = start+str.length
+    if not select
+      start = end
+    else
       start = start+selected.length
-      end = start+str.length
-      @setSelection start, end
-      @textarea.focus()
-      @textarea.scrollTop = scrollTop
-
+    @setSelection start, end
+    @textarea.focus()
+    @textarea.scrollTop = scrollTop
   # wrap selection with before and after
-  wrapSelected: (before, after, select=false) ->
+  wrapSelected: (before, after, select=false, additional=undefined) ->
     selected = @getSelected()
     if selected.indexOf(before) is 0 and selected.lastIndexOf(after) is (selected.length - after.length)
       # Remove the wrapping if the selection has the same before/after
       str = selected.substring before.length, selected.length - after.length
       @replaceSelected str, select
     else
-      @replaceSelected before + selected + after, select
+      if selected is '' and additional?
+        selected = additional
+      else
+        additional = undefined
+      scrollTop = @textarea.scrollTop
+      [start, end] = @getSelection()
+      @_replaceSelected before + selected + after, start, end
+      if not select
+        end = start+before.length+selected.length+after.length
+        start = end
+      else if additional
+        end = start+before.length+selected.length
+        start = start+before.length
+      else
+        end = start+before.length+after.length+selected.length
+      @setSelection start, end
+      @textarea.focus()
+      @textarea.scrollTop = scrollTop

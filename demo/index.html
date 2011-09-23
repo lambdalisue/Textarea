@@ -2,92 +2,94 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
-        <!--[if IE]>
-            <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <title>Textarea.coffee Demo - Cross browser textarea munipulator written in CoffeeScript</title>
-        <script type="text/javascript" src="../lib/textarea.js"></script>
+        <title>Textarea - Cross browser textarea munipulator library written in CoffeeScript</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="js/textarea/textarea.js"></script>
         <script type="text/javascript">
-            $(function(){
+            window.onload = function(){
                 textarea = document.getElementById('textarea');
                 textarea = new Textarea(textarea);
-                $('a#getValue').click(function(){
-                    alert(textarea.getValue());
-                });
-                $('a#getSelection').click(function(){
-                    var pos = textarea.getSelection();
-                    alert("Start: " + pos[0] + " End: " + pos[1]);
-                });
-                $('a#setSelection').click(function(){
-                    alert("I will set selection from 2 to 5");
-                    textarea.setSelection(2, 5);
-                });
-                $('a#getSelected').click(function(){
-                    alert(textarea.getSelected());
-                });
-                $('a#replaceSelected').click(function(){
-                    alert("I will replace selected text with 'Hogehoge' and will select replaced text.");
-                    textarea.replaceSelected('Hogehoge', true);
-                    // If you doesn't want to select replaced text after replace.
-                    //alert("I will replace selected text with 'Hogehoge'");
-                    //textarea.replaceSelected('Hogehoge');
-                });
-                $('a#insertBeforeSelected').click(function(){
-                    alert("I will insert 'Hogehoge' before selected text and will select inserted text.");
-                    textarea.insertBeforeSelected('Hogehoge', true);
-                });
-                $('a#insertAfterSelected').click(function(){
-                    alert("I will insert 'Hogehoge' after selected text and will select inserted text.");
-                    textarea.insertAfterSelected('Hogehoge', true);
-                });
-                $('a#wrapSelected').click(function(){
-                    alert("I will wrap selected text with 'Hogehoge' and 'Foobar' and will select replaced text.");
-                    textarea.wrapSelected('Hogehoge', 'Foobar', true);
-                });
-            });
+            };
         </script>
     </head>
     <body>
         <div id="wrapper">
             <header>
-                <h1>Textarea.coffee Demo</h1>
-                <p>Cross browser textarea munipulator written in CoffeeScript</p>
+                <h1>Textarea Demo</h1>
+                <p>Cross browser textarea munipulator library written in CoffeeScript</p>
             </header>
             <section id="content">
-                <p>NOTICE: This is still develping. The name or the method to use may change.</p>
-                <p><textarea id="textarea">Hello World</textarea></p>
+                <h2>Demo</h2>
+                <textarea id="textarea">
+When I find myself in times of trouble
+Mother Mary comes to me
+Speaking words of wisdom, let it be.
+And in my hour of darkness
+She is standing right in front of me
+Speaking words of wisdom, let it be.
+Let it be, let it be.
+Let it be, let it be.
+Whisper words of wisdom, let it be.
+                </textarea>
 
-                <h2>API Document</h2>
-                <p><code>textarea = new Textarea(document.getElementById('textarea'));</code></p>
-
+                <h2>API Documents</h2>
+                <p>
+<pre><code>&lt;textarea id="textarea"&gt;&lt;/textarea&gt;
+&lt;script type="text/javascript"&gt;
+    textarea = new Textarea(document.getElementById('textarea'));
+&lt;/script&gt;</code></pre>
+                </p>
                 <dl>
-                    <dt><code><a href="#" id="getValue">textarea.getValue();</a></code></dt>
-                    <dd>Get value of textarea</dd>
+                    <dt><code>textarea.getValue();</code></dt>
+                    <dd>
+                    <p>Get value of textarea. Compatible as the code below</p>
+<pre><code>document.getElementById('textarea').value;</code></pre>
+                    <p><a href="#" onclick="alert(textarea.getValue());">Demo</a></p>
 
-                    <dt><code><a href="#" id="getSelection">textarea.getSelection();</a></code></dt>
-                    <dd>Get start and end position of selected in textarea</dd>
+                    <dt><code>textarea.getSelection();</code></dt>
+                    <dd>
+                        <p>Get start and end index of text selection of textarea.</p>
+                        <p><a href="#" onclick="alert(textarea.getSelection());">Demo</a></p>
+                    </dd>
 
-                    <dt><code><a href="#" id="setSelection">textarea.setSelection(start, end);</a></code></dt>
-                    <dd>Set start and end position of selected in textarea</dd>
+                    <dt><code>textarea.setSelection(start, end);</code></dt>
+                    <dd>
+                        <p>Set start and end index of text selection of textarea.</p>
+                        <p><a href="#" onclick="alert('I will select text from 2 to 4'); textarea.setSelection(2, 4);">Demo</a></p>
+                    </dd>
 
-                    <dt><code><a href="#" id="getSelected">textarea.getSelected();</a></code></dt>
-                    <dd>Get selected text in textarea</dd>
+                    <dt><code>textarea.getSelected();</code></dt>
+                    <dd>
+                        <p>Get selected text of textarea.</p>
+                        <p><a href="#" onclick="alert(textarea.getSelected());">Demo</a></p>
+                    </dd>
 
-                    <dt><code><a href="#" id="replaceSelected">textarea.replaceSelected(str, select=false);</a></code></dt>
-                    <dd>Replace selected text with str. If select attribute is true, replaced text will select after replace.</dd>
-                    <dt><code><a href="#" id="insertBeforeSelected">textarea.insertBeforeSelected(str, select=false);</a></code></dt>
-                    <dd>Insert str before selected text. If select attribute is true, inserted text will select after replace.</dd>
-                    <dt><code><a href="#" id="insertAfterSelected">textarea.insertAfterSelected(str, select=false);</a></code></dt>
-                    <dd>Insert str after selected text. If select attribute is true, inserted text will select after replace.</dd>
-                    <dt><code><a href="#" id="wrapSelected">textarea.wrapSelected(before, after, select=false);</a></code></dt>
-                    <dd>Wrap selected text with before and after. If select attribute is true, replaced text will select after replace.</dd>
+                    <dt><code>textarea.replaceSelected(str, select=false);</code></dt>
+                    <dd>
+                        <p>Replace selected text with <code>str</code>. Reselect replaced text after replace if <code>select</code> is true</p>
+                        <p><a href="#" onclick="alert('Selected text will be hogehoge'); textarea.replaceSelected('hogehoge');">Demo</a></p>
+                    </dd>
+
+                    <dt><code>textarea.insertBeforeSelected(str, select=false);</code></dt>
+                    <dd>
+                    <p>Insert <code>str</code> before selected text. Reselect inserted text after insert if <code>select</code> is true</p>
+                        <p><a href="#" onclick="alert('hogehoge will be inserted'); textarea.insertBeforeSelected('hogehoge');">Demo</a></p>
+                    </dd>
+
+                    <dt><code>textarea.insertAfterSelected(str, select=false);</code></dt>
+                    <dd>
+                    <p>Insert <code>str</code> after selected text. Reselect inserted text after insert if <code>select</code> is true</p>
+                        <p><a href="#" onclick="alert('hogehoge will be inserted'); textarea.insertAfterSelected('hogehoge');">Demo</a></p>
+                    </dd>
+
+                    <dt><code>textarea.wrapSelected(before, after, select=false, additional=undefined);</code></dt>
+                    <dd>
+                        <p>Wrap selected text with <code>str</code>. Reselect wrapped text after wrap if <code>select</code> is true</p>
+                        <p>When <code>additional</code> is set, additional will wrapped when empty string is selected.</p>
+                        <p><a href="#" onclick="alert('Selected text will be wrapped with span tag'); textarea.wrapSelected('<span>', '</span>');">Demo</a></p>
+                    </dd>
                 </dl>
             </section>
-            <footer>
-                <span id="copyright">Copyright &copy; 2011 lambdalisue allright reserved.</span>
-            </footer>
         </div>
     </body>
 </html>
