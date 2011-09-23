@@ -7,6 +7,8 @@ Cross browser textarea munipulator script written in CoffeeScript
 This script is inspired by `Control.TextArea <http://livepipe.net/control/textarea>`_ and 
 `markItUp! <http://markitup.jaysalvat.com/home/>`_
 
+Working Demo is available on http://demos.textarea-coffee.hashnote.net/
+
 :Author: Alisue (lambdalisue@hashnote.net)
 :License: MIT License
 :Url: http://github.com/lambdalisue/Textarea.coffee
