@@ -4,12 +4,17 @@
         <meta charset="utf-8">
         <title>Textarea - Cross browser textarea munipulator library written in CoffeeScript</title>
         <link type="text/css" rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <!--[if IE]>
+            <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
         <script type="text/javascript" src="js/textarea/textarea.js"></script>
         <script type="text/javascript">
-            window.onload = function(){
-                textarea = document.getElementById('textarea');
+            // The script below use jQuery but Textarea is not jQuery dependent
+            $(document).ready(function(){
+                textarea = $('#textarea');
                 textarea = new Textarea(textarea);
-            };
+            });
         </script>
     </head>
     <body>
@@ -17,7 +22,16 @@
             <header>
                 <h1>Textarea Demo</h1>
                 <p>Cross browser textarea munipulator library written in CoffeeScript</p>
+                <p>See <a href="http://demos.richarea.hashnote.net/">Richarea</a> if you want to munipulate richarea (iframe) insted of
+                textarea and see <a href="http://demos.jencil.hashnote.net/">Jencil</a> if you want to use JavaScript Editor which can handle Markup and WYSIWYG.</p>
             </header>
+            <nav id="relatedlinks">
+                <ul>
+                    <li id="github"><a href="http://github.com/lambdalisue/Textarea" title="Github" target="_blank">Github</a></li>
+                    <li id="tumblr"><a href="http://hashnote.net" title="Tumblr" target="_blank">Tumblr</a></li>
+                    <li id="twitter"><a href="http://twitter.com/lambdalisue" title="Twitter" target="_blank">Twitter</a></li>
+                </ul>
+            </nav>
             <section id="content">
                 <h2>Demo</h2>
                 <textarea id="textarea">
@@ -89,6 +103,14 @@ Whisper words of wisdom, let it be.
                         <p><a href="#" onclick="alert('Selected text will be wrapped with span tag'); textarea.wrapSelected('<span>', '</span>');">Demo</a></p>
                     </dd>
                 </dl>
+
+                <h2>Download</h2>
+                <p>This library is created by Alisue. You can use this library under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></p>
+                <p><strong>Latest version: <a href="https://github.com/lambdalisue/Textarea/zipball/master">Download</a></strong></p>
+                <h3>Version history</h3>
+                <ul>
+                    <li>Version 0.1.0: <a href="https://github.com/lambdalisue/Textarea/zipball/v0.1.0">Download</a></strong></li>
+                </ul>
             </section>
         </div>
     </body>

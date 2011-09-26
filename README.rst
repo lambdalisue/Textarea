@@ -1,5 +1,5 @@
 ******************************
- Textarea.coffee
+ Textarea
 ******************************
 
 Cross browser textarea munipulator script written in CoffeeScript
@@ -7,11 +7,12 @@ Cross browser textarea munipulator script written in CoffeeScript
 This script is inspired by `Control.TextArea <http://livepipe.net/control/textarea>`_ and 
 `markItUp! <http://markitup.jaysalvat.com/home/>`_
 
-Working Demo is available on http://demos.textarea-coffee.hashnote.net/
+Working Demo is available on http://demos.textarea.hashnote.net/
 
 :Author: Alisue (lambdalisue@hashnote.net)
 :License: MIT License
-:Url: http://github.com/lambdalisue/Textarea.coffee
+:Version: 0.1.0
+:Url: http://github.com/lambdalisue/Textarea
 
 How to use
 ====================
@@ -20,7 +21,7 @@ First you have to include ``textarea.js`` on your HTML. HTML looks like below::
     <html>
         <head>
             <meta charset="utf-8">
-            <script type="text/javascript" src="https://raw.github.com/lambdalisue/textarea.coffee/master/lib/textarea.js"></script>
+            <script type="text/javascript" src="https://raw.github.com/lambdalisue/Textarea/master/lib/textarea.min.js"></script>
             <!-- optional -->
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
             <!-- /optional -->
