@@ -22,6 +22,8 @@ class @Textarea
   # get value
   getValue: ->
     return @textarea.value
+  setValue: (value) ->
+    @textarea.value = value
   # get selection
   getSelection: ->
     if document.selection

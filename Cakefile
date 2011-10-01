@@ -17,7 +17,7 @@ path            = require 'path'
 {spawn, exec}   = require 'child_process'
 
 product = 'textarea'
-version = 'v0.1.0'
+version = 'v0.1.1'
 gcc = '$HOME/.app/compiler-latest/compiler.jar'
 srcdir = 'src'
 dstdir = 'lib'
